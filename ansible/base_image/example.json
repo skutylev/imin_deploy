@@ -18,7 +18,8 @@
     "inline": [
       "sleep 30",
       "sudo apt-get -y update",
-      "sudo apt-get install -y ansible"
+      "sudo apt-get install -y python3-pip",
+      "sudo pip3 install ansible"
     ]},
     {
     "type": "ansible-local",
