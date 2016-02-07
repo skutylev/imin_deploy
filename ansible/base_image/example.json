@@ -13,10 +13,10 @@
     "ssh_username": "ubuntu",
     "ami_name": "packer-example {{timestamp}}"
   }],
-  "provisioners": {
+  "provisioners": [{
     "type": "ansible-local",
     "playbook_file": "base.yml",
     "inventory_groups":"base_ami",
     "inventory_file": "hosts"
-  }
+  }]
 }

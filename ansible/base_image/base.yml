@@ -1,0 +1,13 @@
+---
+- name: Provision base ami image
+  hosts: base_ami
+  sudo: yes
+  sudo_user: root
+  remote_user: ubuntu
+  vars:
+    - update_apt_cache: yes
+  vars_files:
+    - env_vars/base.yml
+    - env_vars/production.yml
+  roles:
+    - common
