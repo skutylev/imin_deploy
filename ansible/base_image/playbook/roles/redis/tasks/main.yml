@@ -1,0 +1,5 @@
+---
+- name: Install Redis
+  apt: name=redis-server update_cache={{ update_apt_cache }} state=installed
+  tags: packages
+  notify: reload redis-server

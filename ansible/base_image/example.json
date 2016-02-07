@@ -16,7 +16,7 @@
   "provisioners": [{
     "type": "shell",
     "inline": [
-      "sleep 3",
+      "sleep 30",
       "sudo apt-get install -y software-properties-common",
       "sudo apt-add-repository -y ppa:ansible/ansible",
       "sudo apt-get -y update",
@@ -30,7 +30,8 @@
     "inventory_groups":"base_ami",
     "role_paths": [
       "playbook/roles/common",
-      "playbook/roles/nginx"
+      "playbook/roles/nginx",
+      "playbook/roles/redis"
     ]
   }]
 }
