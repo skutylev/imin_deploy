@@ -23,11 +23,12 @@
     ]},
     {
     "type": "ansible-local",
+    "playbook_dir": "playbook",
     "playbook_file": "playbook/base.yml",
     "inventory_file": "playbook/hosts",
     "inventory_groups":"base_ami",
     "role_paths": [
-	  "playbook/"
+        "/etc/ansible/playbook/roles/common"
     ]
   }]
 }
