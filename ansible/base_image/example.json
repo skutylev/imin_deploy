@@ -23,8 +23,12 @@
     ]},
     {
     "type": "ansible-local",
+    "extra_arguments": "--extra-vars 'basedir=/tmp/packer-provisioner-ansible-local/playbook/'",
     "playbook_file": "base.yml",
     "inventory_groups":"base_ami",
-    "inventory_file": "hosts"
+    "inventory_file": "hosts",
+    "role_paths": [
+	  "roles/common"
+    ]
   }]
 }
