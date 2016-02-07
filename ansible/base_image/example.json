@@ -28,7 +28,7 @@
     "inventory_file": "playbook/hosts",
     "inventory_groups":"base_ami",
     "role_paths": [
-        "/etc/ansible/playbook/roles/common"
+        "playbook/roles/common"
     ]
   }]
 }
