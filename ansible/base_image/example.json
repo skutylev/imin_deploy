@@ -23,10 +23,6 @@
     ]},
     {
     "type": "ansible-local",
-    "playbook_dir": "",
-    "": "",
-    "": "",
-    "": "",
     "playbook_file": "base.yml",
     "inventory_groups":"base_ami",
     "inventory_file": "hosts"
