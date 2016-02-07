@@ -1,5 +1,5 @@
 ---
-# roles/workstation/tasks/main.yml
+# roles/workstation/tasks/nginx_conf.j2
   - name: add timezone configuration
     command: bash -c 'echo US/Eastern > /etc/timezone'
 

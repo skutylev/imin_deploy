@@ -1,5 +1,5 @@
 ---
-# roles/launch/tasks/main.yml
+# roles/launch/tasks/nginx_conf.j2
 
 - name: Search for the latest Ubuntu 14.04 AMI
   ec2_ami_find:
