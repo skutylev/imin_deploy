@@ -1,8 +1,8 @@
 ---
 - name: Provision base ami image
   hosts: base_ami
-  sudo: yes
-  sudo_user: root
+  become: yes
+  become_user: root
   remote_user: ubuntu
   vars:
     - update_apt_cache: yes
