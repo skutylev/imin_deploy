@@ -18,16 +18,17 @@
     "inline": [
       "sleep 30",
       "sudo apt-get -y update",
-      "sudo apt-get install -y python3-pip",
-      "sudo pip3 install ansible"
+      "sudo apt-get install -y ansible"
     ]},
     {
     "type": "ansible-local",
     "playbook_file": "playbook/base.yml",
-    "inventory_groups":"base_ami",
     "inventory_file": "playbook/hosts",
+    "inventory_groups":"base_ami",
     "role_paths": [
-	  "playbook/roles/common"
+	  "playbook/roles/",
+      "playbook/roles/common/",
+      "playbook/roles/common/tasks"
     ]
   }]
 }
