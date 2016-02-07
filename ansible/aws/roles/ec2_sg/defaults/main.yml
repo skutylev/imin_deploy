@@ -1,0 +1,19 @@
+---
+# Variables that can provide as extra vars
+VPC_NAME: navi_vpc
+VPC_REGION: eu-west-1 # Ireland
+ENVIRONMENT: "dev"
+EC2_SECURITY_GROUPS:
+  - name: navi-sg
+    description: "This sg is just a test sg"
+    rules:
+      - proto: tcp
+        from_port: 22
+        to_port: 22
+        cidr_ip: 0.0.0.0/0
+
+# Use inside the tasks
+vpc_name: "{{ VPC_NAME }}"
+vpc_region: "{{ VPC_REGION }}"
+Environment: "{{ ENVIRONMENT }}"
+ec2_security_groups: "{{ EC2_SECURITY_GROUPS }}"

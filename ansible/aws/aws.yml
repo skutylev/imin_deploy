@@ -1,0 +1,14 @@
+---
+- name: Provision ec2 instance
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - env_vars/base.yml
+  roles:
+    - vpc
+    - ec2_sg
+    - ec2_key
+    - ec2_instance
+    - elb
+    - asg
