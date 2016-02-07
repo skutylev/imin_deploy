@@ -19,10 +19,14 @@
       "sleep 30",
       "sudo apt-get -y update",
       "sudo apt-get install -y python3-pip",
-      "sudo pip install ansible"
+      "sudo pip3 install ansible"
     ]},
     {
     "type": "ansible-local",
+    "playbook_dir": "",
+    "": "",
+    "": "",
+    "": "",
     "playbook_file": "base.yml",
     "inventory_groups":"base_ami",
     "inventory_file": "hosts"
