@@ -9,3 +9,4 @@
     - update_apt_cache: yes
   roles:
     - common
+    - nginx
