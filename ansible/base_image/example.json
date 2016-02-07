@@ -14,6 +14,14 @@
     "ami_name": "packer-example {{timestamp}}"
   }],
   "provisioners": [{
+    "type": "shell",
+    "inline": [
+      "sleep 30",
+      "sudo apt-get -y update",
+      "sudo apt-get install -y python3-pip",
+      "sudo pip install ansible"
+    ]},
+    {
     "type": "ansible-local",
     "playbook_file": "base.yml",
     "inventory_groups":"base_ami",
