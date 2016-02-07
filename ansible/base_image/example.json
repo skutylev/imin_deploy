@@ -16,7 +16,7 @@
   "provisioners": [{
     "type": "shell",
     "inline": [
-      "sleep 30",
+      "sleep 3",
       "sudo apt-get install -y software-properties-common",
       "sudo apt-add-repository -y ppa:ansible/ansible",
       "sudo apt-get -y update",
