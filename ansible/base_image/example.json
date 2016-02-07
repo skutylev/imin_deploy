@@ -27,7 +27,7 @@
     "inventory_file": "playbook/hosts",
     "inventory_groups":"base_ami",
     "role_paths": [
-	  "playbook/roles/"
+	  "playbook/"
     ]
   }]
 }
