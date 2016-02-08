@@ -1,9 +1,12 @@
+1 Получить ключи aws
+
 I Install prerequisites
 1) install python3, python3-pip,
 2) install venv: pip3 install virtualenv
 3) create venv: virtualenv /path/to/env
 4) use venv: source /path/to/env/bin/activate
 5) install ansible: pip install ansible
+
 
 II Setup aws environment
 1) go to aws.amazon.com and make auth
