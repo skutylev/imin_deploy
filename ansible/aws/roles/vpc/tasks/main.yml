@@ -1,8 +1,8 @@
 ---
 - name: Creating an AWS VPC inside mentioned Region
   ec2_vpc:
-    region: "{{ vpc_region }}"
     state:  present
+    region: "{{ vpc_region }}"
     cidr_block: "{{ vpc_cidr_block }}"
     resource_tags: { "Name":"{{ vpc_name }}-vpc", "Environment":"{{ ENVIRONMENT }}" }
     subnets: "{{ vpc_subnets }}"

@@ -1,4 +1,4 @@
 [localhost]
-127.0.0.1
+127.0.0.1 ansible_shell_type=sh
 
 [webserver]
