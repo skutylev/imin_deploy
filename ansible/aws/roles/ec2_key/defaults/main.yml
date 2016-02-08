@@ -1,7 +1,7 @@
 ---
 # Variables that can provide as extra vars
 VPC_REGION: eu-west-1 # Ireland
-GITHUB_USERNAME: no
+GITHUB_USERNAME: skutylev
 EC2_KEY_NAME: "my-default-key"
 LOCAL_USER_SSH_KEY: yes
 
