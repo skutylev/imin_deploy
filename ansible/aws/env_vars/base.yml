@@ -10,14 +10,14 @@ SERVER_ROLE: web
 
 AWS_NAME: "navi-web"
 AWS_REGION: "eu-west-1"
-AWS_AVAILABILITY_ZONES: '"eu-west-1a" "eu-west-1b"'
-AWS_AMI_IMAGE: "id"
-AWS_INSTANCE_TYPE: "t1.micro"
+AWS_AVAILABILITY_ZONES: "eu-west-1a"
+AWS_AMI_IMAGE: "ami-54ce7027"
+AWS_INSTANCE_TYPE: "t2.micro"
 AWS_SG: "navi_web"
 AWS_ELB: "{{ AWS_NAME }}-elb"
-AWS_VPC_ZONE: "navi-web"
-AWS_SUBNETS: "navi-web"
-AWS_IAM_PROFILE: "navi_web"
+AWS_VPC_ZONE: "vpc-2d242548"
+AWS_SUBNETS: "subnet-2ddd3649"
+AWS_IAM_PROFILE: "arn:aws:iam:992888348717:user/navi_web"
 AWS_SSH_KEY: "navi_web"
 
 AWS_ELB_LISTENERS:

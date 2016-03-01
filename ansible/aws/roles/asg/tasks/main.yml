@@ -21,8 +21,8 @@
     max_size: 3
     desired_capacity: 2
     region: '{{ AWS_REGION }}'
-    availability_zones: ['{{ AWS_AVAILABILITY_ZONES }}']
-    vpc_zone_identifier: ['{{ AWS_VPC_ZONE }}']
+    availability_zones: '{{ AWS_AVAILABILITY_ZONES }}'
+    vpc_zone_identifier: '{{ AWS_SUBNETS }}'
     tags:
       - environment: production
         propagate_at_launch: no
