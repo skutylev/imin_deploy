@@ -87,7 +87,7 @@ ELB_SG:
 
 AWS_NAME: "navi-web"
 AWS_REGION: "eu-east-1"
-AWS_AVAILABILITY_ZONES: "us-east-1a", "us-east-1b"
+AWS_AVAILABILITY_ZONES: "us-east-1a" "us-east-1b"
 AWS_AMI_IMAGE: "id"
 AWS_INSTANCE_TYPE: "t1.micro"
 AWS_SG: "navi_web"
