@@ -1,23 +1,8 @@
 ---
-# Keys should be removed (Use set env)
-AWS_ACCESS_KEY: "AKIAJOFPKGFJY22UWHSQ"
-AWS_SECRET_KEY: "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"
-
 # Environment specific variables
 COMPANY: naviworld
 ENVIRONMENT: dev
 SERVER_ROLE: web
-
-# VPC specific variables
-VPC_NAME: "{{ COMPANY }}-{{ ENVIRONMENT }}"
-VPC_REGION: eu-west-1 # Ireland
-VPC_CIDR: "10.10.0.0/16"
-VPC_CLASS_DEFAULT: "10.10"
-
-# Github username for creating EC2 KEY Pair
-GITHUB_USERNAME: "skutylev"
-EC2_KEY_NAME: "{{ GITHUB_USERNAME }}-github-key"
-LOCAL_USER_SSH_KEY: no
 
 # Ubuntu AMI base image from packer
 #AMI_NAME: "ubuntu/images/hvm-ssd/ubuntu-trusty-14.04-amd64-server-*"
@@ -99,3 +84,35 @@ ELB_SG:
         from_port: 80
         to_port: 80
         cidr_ip: 0.0.0.0/0
+
+AWS_NAME: "navi-web"
+AWS_REGION: "eu-east-1"
+AWS_AVAILABILITY_ZONES: "us-east-1a", "us-east-1b"
+AWS_AMI_IMAGE: "id"
+AWS_INSTANCE_TYPE: "t1.micro"
+AWS_SG: "navi_web"
+AWS_ELB: "{{ AWS_NAME }}-elb"
+AWS_VPC_ZONE: ""
+AWS_SUBNETS: ""
+AWS_IAM_PROFILE: "navi_web"
+AWS_SSH_KEY: "navi_web"
+
+AWS_ELB_LISTENERS:
+  - protocol: http
+    load_balancer_port: 80
+    instance_protocol: http
+    instance_port: 80
+  - protocol: https
+    load_balancer_port: 443
+    instance_protocol: http
+    instance_port: 443
+    ssl_certificate_id: "arn:aws:iam::xxxxxxxxxxxx:server-certificate/navi-crt"
+
+AWS_ELB_HEALTH_CHECK:
+        ping_protocol: http # options are http, https, ssl, tcp
+        ping_port: 80
+        ping_path: "/about" # not required for tcp or ssl
+        response_timeout: 5 # seconds
+        interval: 30 # seconds
+        unhealthy_threshold: 2
+        healthy_threshold: 10

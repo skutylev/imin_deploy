@@ -1,12 +1,6 @@
 {
-  "variables": {
-    "aws_access_key": "AKIAJOFPKGFJY22UWHSQ",
-    "aws_secret_key": "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"
-  },
   "builders": [{
     "type": "amazon-ebs",
-    "access_key": "{{user `aws_access_key`}}",
-    "secret_key": "{{user `aws_secret_key`}}",
     "region": "eu-east-1",
     "source_ami": "ami-f95ef58a",
     "instance_type": "t2.micro",
