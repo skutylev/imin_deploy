@@ -9,8 +9,8 @@ SERVER_ROLE: web
 #AMI_OWNER: "099720109477"
 
 AWS_NAME: "navi-web"
-AWS_REGION: "eu-east-1"
-AWS_AVAILABILITY_ZONES: '"us-east-1a" "us-east-1b"'
+AWS_REGION: "eu-west-1"
+AWS_AVAILABILITY_ZONES: '"eu-west-1a" "eu-west-1b"'
 AWS_AMI_IMAGE: "id"
 AWS_INSTANCE_TYPE: "t1.micro"
 AWS_SG: "navi_web"
@@ -29,7 +29,7 @@ AWS_ELB_LISTENERS:
     load_balancer_port: 443
     instance_protocol: http
     instance_port: 443
-    ssl_certificate_id: "arn:aws:iam::xxxxxxxxxxxx:server-certificate/navi-crt"
+    ssl_certificate_id: "arn:aws:iam::992888348717:server-certificate/naviaddress.com"
 
 AWS_ELB_HEALTH_CHECK:
         ping_protocol: http # options are http, https, ssl, tcp
