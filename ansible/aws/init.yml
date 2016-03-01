@@ -1,0 +1,10 @@
+---
+- name: Provision app
+  hosts: localhost
+  connection: local
+  gather_facts: no
+  vars_files:
+    - env_vars/base.yml
+  roles:
+    - elb
+    - asg
