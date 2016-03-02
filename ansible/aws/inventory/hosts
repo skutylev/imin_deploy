@@ -1,3 +1,4 @@
+localhost
 fancyapp-blue
 fancyapp-violet
 amibuilder
@@ -11,6 +12,6 @@ amibuilder
 fancyapp-blue
 fancyapp-violet
 
-[localhost]
-127.0.0.1 ansible_shell_type=sh ansible_python_interpreter=/home/sakutylev/.navi_dep_env/bin/python
+#[localhost]
+#127.0.0.1 ansible_shell_type=sh ansible_python_interpreter=/home/sakutylev/.navi_dep_env/bin/python
 

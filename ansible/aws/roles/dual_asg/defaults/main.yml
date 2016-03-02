@@ -1,0 +1,6 @@
+---
+instance_type: t2.small
+availability_zones:
+- eu-west-1a
+- eu-west-1b
+region: eu-west-1

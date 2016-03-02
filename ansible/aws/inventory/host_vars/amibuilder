@@ -1,5 +1,5 @@
-base_image: ami-eb6b0182
-group_id: sg-ada30fc8
-vpc_subnet_id: subnet-3c61527a
+base_image: ami-f95ef58a
+group_id: sg-3a0d315e
+vpc_subnet_id: subnet-374f5c40
 ansible_ssh_user: root
 

@@ -1,6 +1,6 @@
-app_name: rollingAMI
+app_name: navi_web
 instance_type: t2.micro
-region: us-east-1
+region: eu-west-1
 key_name: navi_web
 lc_security_groups:
 - "{{ app_security_group.group_id }}"
@@ -14,10 +14,10 @@ asg_max_size: 10
 vpc_subnets:
   - cidr: 172.22.1.0/24
     resource_tags: { "Name":"{{ app_name }}-1" }
-    az: us-east-1b
+    az: eu-west-1a
   - cidr: 172.22.2.0/24
     resource_tags: { "Name":"{{ app_name }}-2" }
-    az: us-east-1c 
+    az: eu-west-1b 
 route_tables:
   - subnets:
       - 172.22.1.0/24

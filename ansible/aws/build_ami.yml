@@ -1,4 +1,8 @@
-- hosts: amibuilder
+- name: create base image
+  hosts: amibuilder
+  connection: local
+  gather_facts: no
+
   tasks:
   - name: launch temporary instance
     ec2:
@@ -6,7 +10,7 @@
       region: "{{ region }}"
       key_name: "{{ key_name }}"
       group_id: "{{ group_id }}"
-      instance_type: m1.small
+      instance_type: t2.micro
       vpc_subnet_id: "{{ vpc_subnet_id }}"
       image: "{{ base_image }}"
       wait: yes

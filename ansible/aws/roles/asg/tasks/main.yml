@@ -17,12 +17,15 @@
     launch_config_name: '{{ AWS_NAME }}-lc'
     health_check_period: 300
     health_check_type: ELB
+    replace_all_instances: yes
     min_size: 1
     max_size: 3
-    desired_capacity: 2
+   #desired_capacity: 2
     region: '{{ AWS_REGION }}'
     availability_zones: '{{ AWS_AVAILABILITY_ZONES }}'
     vpc_zone_identifier: '{{ AWS_SUBNETS }}'
+    wait_for_instances: True
+    wait_timeout: 300
     tags:
       - environment: production
         propagate_at_launch: no
