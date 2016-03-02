@@ -28,7 +28,7 @@
 - hosts: just_created
   remote_user: root
   roles:
-    - apache
+    - nginx
 
 - hosts: amibuilder
   tasks:
