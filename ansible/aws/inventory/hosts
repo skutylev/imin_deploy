@@ -1,4 +1,14 @@
+fancyapp-blue
+fancyapp-violet
+
+[apps]
+fancyapp-blue
+fancyapp-violet
+
+[colors]
+fancyapp-blue
+fancyapp-violet
+
 [localhost]
 127.0.0.1 ansible_shell_type=sh ansible_python_interpreter=/home/sakutylev/.navi_dep_env/bin/python
 
-[webserver]
