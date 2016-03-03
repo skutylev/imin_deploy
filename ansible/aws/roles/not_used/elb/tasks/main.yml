@@ -1,0 +1,14 @@
+---
+- name: Ensure load balancer exists
+  ec2_elb_lb:
+    name: '{{ AWS_ELB }}'
+    security_group_names: '{{ AWS_SG }}'
+    state: present
+    region: '{{ AWS_REGION }}'
+    subnets: '{{ AWS_SUBNETS }}'
+    purge_subnets: yes
+    cross_az_load_balancing: yes
+    connection_draining_timeout: 60
+    listeners: "{{ AWS_ELB_LISTENERS }}"
+    health_check: "{{ AWS_ELB_HEALTH_CHECK }}"
+  register: elb

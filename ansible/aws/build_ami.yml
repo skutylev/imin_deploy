@@ -39,7 +39,6 @@
 
 - hosts: amibuilder
   tasks:
-
   - name: bundle ami
     action:
       module: ec2_ami

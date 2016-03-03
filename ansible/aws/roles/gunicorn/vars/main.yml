@@ -1,0 +1,18 @@
+---
+# Application settings.
+virtualenv_path: "/webapps/{{ application_name }}"
+project_path: "{{ virtualenv_path }}/{{ project_name }}"
+application_path: "{{ project_path }}"
+application_log_dir: "{{ virtualenv_path }}/logs"
+application_log_file: "{{ application_log_dir }}/gunicorn_supervisor.log"
+requirements_file: "{{ project_path }}/requirements.txt"
+
+# Gunicorn settings
+gunicorn_user: "{{ application_name }}"
+gunicorn_group: webapps
+
+# Flask Environment variables
+flask_environment:
+  FLASK_SETTINGS_MODULE: "{{ flask_settings_file }}"
+  FLASK_SECRET_KEY: "{{ flask_secret_key }}"
+  FLASK_WSGI_MODULE: "{{ flask_wsgi_module }}"

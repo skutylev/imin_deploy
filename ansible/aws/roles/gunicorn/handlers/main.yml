@@ -1,0 +1,6 @@
+---
+- name: restart application
+  supervisorctl: name={{ application_name }} state=restarted
+
+- name: restart gunicorn
+  service: name=gunicorn_start state=restarted
