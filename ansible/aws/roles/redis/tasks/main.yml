@@ -1,3 +1,11 @@
+- name: Create Elasticache subnet group
+  elasticache_subnet_group:
+    state: present
+    description: "nwrsg"
+    name: "navi-web-redis-subnet-group"
+    subnets: "{{ asg_subnets }}"
+  register: ecsg
+
 - elasticache:
     name: "navi-web-redis"
     state: present
@@ -6,14 +14,7 @@
     node_type: cache.m3.medium
     num_nodes: 1
     cache_port: 6379
-    cache_security_groups:
-      - default
+    cache_subnet_groups:
+      - "{{ ecsg }}"
     zone: eu-west-1
 
-#- elasticache_subnet_group:
-#    state: present
-#    name: norwegian-blue
-#    description: My Fancy Ex Parrot Subnet Group
-#    subnets:
-#      - subnet-aaaaaaaa
-#      - subnet-bbbbbbbb
