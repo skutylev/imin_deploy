@@ -3,7 +3,9 @@
     state: present
     description: "nwrsg"
     name: "navi-web-redis-subnet-group"
-    subnets: "{{ asg_subnets }}"
+    subnets:
+      - subnet-2aa02851
+      - subnet-43295c2a
   register: ecsg
 
 - elasticache:
@@ -15,7 +17,6 @@
     num_nodes: 1
     cache_port: 6379
     cache_subnet_groups:
-      - subnet-2aa02851
-      - subnet-43295c2a
+      - "{{ ecsg }}"
     zone: eu-west-1
 
