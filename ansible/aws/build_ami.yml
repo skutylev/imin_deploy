@@ -1,6 +1,5 @@
 - name: create base image
   hosts: amibuilder
-  connection: local
   gather_facts: no
 
   tasks:
@@ -32,7 +31,11 @@
 - hosts: just_created
   remote_user: root
   roles:
+    - common
     - nginx
+    - gunicorn
+    - celery
+    - sitemap_gen
 
 - hosts: amibuilder
   tasks:
