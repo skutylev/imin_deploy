@@ -1,21 +1,21 @@
-- name: Create Elasticache subnet group
-  elasticache_subnet_group:
-    state: present
-    description: "nwrsg"
-    name: "navi-web-redis-subnet-group"
-    subnets:
-      - subnet-2aa02851
-      - subnet-43295c2a
-  register: ecsg
+---
+ - name: Create a subnet group for caches
+   elasticache_subnet_group:
+     state: present
+     name: "navi-web-redis-subnet-group"
+     description: "Redis eu-west-1 subnet group"
+     subnets:
+      - subnet-fa30da9e
+     region: eu-west-1
 
-- elasticache:
-    name: "navi-web-redis"
-    state: present
-    engine: redis
-    cache_engine_version: 2.8.24
-    node_type: cache.m3.medium
-    num_nodes: 1
-    cache_port: 6379
-    cache_subnet_groups:
-      - "{{ ecsg }}"
-    zone: eu-west-1
+ - name: "Create the Redis instance for"
+   elasticache:
+     name: "navi-web-redis"
+     state: present
+     engine: redis
+     node_type: cache.m3.medium
+     num_nodes: 2
+     region: eu-west-1
+     zone: eu-west-1a
+     cache_subnet_group: "navi-web-redis-subnet-group"
+     wait: yes
