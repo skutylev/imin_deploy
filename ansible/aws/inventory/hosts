@@ -2,11 +2,13 @@ localhost
 fancyapp-blue
 fancyapp-violet
 amibuilder
+redis
 
 [apps]
 fancyapp-blue
 fancyapp-violet
 amibuilder
+redis
 
 [colors]
 fancyapp-blue
