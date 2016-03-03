@@ -1,0 +1,5 @@
+- hosts: redis
+  vars_files:
+  - vars/settings.yml
+  roles:
+  - redis

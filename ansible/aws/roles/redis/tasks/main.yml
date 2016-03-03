@@ -1,0 +1,19 @@
+- elasticache:
+    name: "navi-web-redis"
+    state: present
+    engine: redis
+    cache_engine_version: 1.4.14
+    node_type: cache.m1.small
+    num_nodes: 1
+    cache_port: 11211
+    cache_security_groups:
+      - default
+    zone: eu-west-1
+
+- elasticache_subnet_group:
+    state: present
+    name: norwegian-blue
+    description: My Fancy Ex Parrot Subnet Group
+    subnets:
+      - subnet-aaaaaaaa
+      - subnet-bbbbbbbb
