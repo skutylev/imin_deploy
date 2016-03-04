@@ -20,3 +20,4 @@
         {{ key.key.private_key }}
      create: true
      state: present
+   run_once: true

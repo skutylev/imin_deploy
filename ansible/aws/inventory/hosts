@@ -1,3 +1,4 @@
+aws
 localhost
 fancyapp-blue
 fancyapp-violet
@@ -8,6 +9,7 @@ prerender
 security_group
 
 [apps]
+aws
 fancyapp-blue
 fancyapp-violet
 amibuilder

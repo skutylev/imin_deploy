@@ -1,4 +1,4 @@
- - hosts: prerender
+ - hosts: aws
    vars_files:
     - vars/settings.yml
    tasks:

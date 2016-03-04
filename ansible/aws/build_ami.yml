@@ -1,4 +1,4 @@
- - hosts: amibuilder
+ - hosts: aws
    vars_files:
     - env_vars/base.yml
    tasks:
@@ -33,7 +33,7 @@
     - nginx
     - gunicorn
 
- - hosts: amibuilder
+ - hosts: aws
    tasks:
    - name: bundle ami
      action:

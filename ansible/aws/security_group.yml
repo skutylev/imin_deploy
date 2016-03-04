@@ -1,4 +1,4 @@
-- hosts: security_group
+- hosts: aws
   vars_files:
   - vars/settings.yml
   roles:

@@ -1,4 +1,4 @@
-- hosts: redis
+- hosts: aws
   vars_files:
   - vars/settings.yml
   roles:
