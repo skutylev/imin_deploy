@@ -1,1 +1,15 @@
 group_id: sg-0f87bf6b
+key_name: navi-web
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+

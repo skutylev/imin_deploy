@@ -1,0 +1,5 @@
+ - hosts: route53
+   vars_files:
+     - vars/settings.yml
+   roles:
+     - key_pairs

@@ -1,0 +1,22 @@
+ - name: Create ec2 key pair
+   ec2_key:
+     name: navi-web
+     state: present
+   register: key
+ - debug: var=key
+
+ - name: Add key pair name in var file
+   lineinfile:
+     dest: vars/settings.yml
+     line: |
+         key_name: "{{ key.key.name }}"
+         private_key_path: "~/.ssh/id_rsa_navi"
+     state: present
+
+ - name: Add private key in ~/.ssh/id_rsa_navi
+   lineinfile:
+     dest: ~/.ssh/id_rsa_navi
+     line: |
+        {{ key.key.private_key }}
+     create: true
+     state: present
