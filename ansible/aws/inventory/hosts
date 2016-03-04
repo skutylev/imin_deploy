@@ -3,12 +3,18 @@ fancyapp-blue
 fancyapp-violet
 amibuilder
 redis
+route53
+prerender
+security_group
 
 [apps]
 fancyapp-blue
 fancyapp-violet
 amibuilder
 redis
+route53
+prerender
+security_group
 
 [colors]
 fancyapp-blue

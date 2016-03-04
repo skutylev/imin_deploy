@@ -11,7 +11,7 @@ SERVER_ROLE: web
 AWS_NAME: "navi-web"
 AWS_REGION: "eu-west-1"
 AWS_AVAILABILITY_ZONES: "eu-west-1a"
-AWS_AMI_IMAGE: "ami-54ce7027"
+AWS_AMI_IMAGE: "ami-f95ef58a"
 AWS_INSTANCE_TYPE: "t2.micro"
 AWS_SG: "navi_web"
 AWS_ELB: "{{ AWS_NAME }}-elb"

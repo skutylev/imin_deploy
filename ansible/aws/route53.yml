@@ -1,5 +1,5 @@
-- hosts: redis
+- hosts: route53
   vars_files:
   - vars/settings.yml
   roles:
-  - redis
+  - route53
