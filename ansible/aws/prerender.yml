@@ -2,18 +2,6 @@
    vars_files:
     - vars/settings.yml
    tasks:
-    - name: Get vpc facts
-      ec2_vpc_net_facts:
-        filters:
-          "tag:Name": naviworld-dev-vpc
-      register: vpc
-
-    - name: Get vpc subnet facts
-      ec2_vpc_subnet_facts:
-        filters:
-          vpc-id: "{{ vpc.vpcs[0].id }}"
-      register: subnets
-
     - name: Create prerender instance
       ec2:
         assign_public_ip: yes
@@ -21,8 +9,8 @@
         key_name: "{{ key_name }}"
         group_id: "{{ group_id }}"
         instance_type: t2.micro
-        vpc_subnet_id: "{{ subnets.subnets[0].id }}"
-        image: "ami-f95ef58a"
+        vpc_subnet_id: "{{ subnets[0] }}"
+        image: "{{ ami_id }}"
         wait: yes
         wait_timeout: 300
         exact_count: 1
@@ -49,6 +37,9 @@
         overwrite: yes
 
  - hosts: just_created
-   remote_user: ubuntu
+   become: yes
+   become_user: root
+   vars_files:
+     - vars/settings.yml
    roles:
      - common

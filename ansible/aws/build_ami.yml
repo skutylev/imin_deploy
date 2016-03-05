@@ -1,6 +1,7 @@
  - hosts: aws
    vars_files:
     - env_vars/base.yml
+    - vars/settings.yml
    tasks:
     - name: launch temporary instance
       ec2:
@@ -9,8 +10,8 @@
         key_name: "{{ key_name }}"
         group_id: "{{ group_id }}"
         instance_type: t2.micro
-        vpc_subnet_id: "{{ vpc_subnet_id }}"
-        image: "{{ base_image }}"        
+        vpc_subnet_id: "{{ subnets.0 }}"
+        image: "{{ ami_id }}"        
         wait: yes
         wait_timeout: 50
         exact_count: 1

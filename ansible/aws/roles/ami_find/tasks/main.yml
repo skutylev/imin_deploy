@@ -1,0 +1,13 @@
+---
+ - name: Find AMI
+   ec2_ami_find:
+     ami_id: ami-f95ef58a
+   register: ami
+
+ - name: Add AMI id in vars file
+   lineinfile:
+     dest: vars/settings.yml
+     line: |
+         ami_id: "{{ ami.results.0.ami_id }}"
+     create: true
+

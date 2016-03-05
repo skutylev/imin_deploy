@@ -1,27 +1,12 @@
-group_id: sg-0f87bf6b
-key_name: navi-web
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
+region: "eu-west-1"
+vpc_id: "vpc-f03f3d95"
+subnets: 
+  - "subnet-15de2a71"
+  - "subnet-c7564ab0"
+group_id: sg-93a992f7
+ami_id: "ami-f95ef58a"
+image_id: ami-0b7bc278
+lc_suffix: 1457200623
 key_name: "navi-web"
 private_key_path: "~/.ssh/id_rsa_navi"
 

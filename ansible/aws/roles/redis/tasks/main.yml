@@ -1,24 +1,24 @@
 ---
- - name: Get vpc facts
-   ec2_vpc_net_facts:
-     filters:
-       "tag:Name": naviworld-dev-vpc
-   register: vpc
+# - name: Get vpc facts
+#   ec2_vpc_net_facts:
+#     filters:
+#       "tag:Name": naviworld-dev-vpc
+#   register: vpc
 
- - name: Get vpc subnet facts
-   ec2_vpc_subnet_facts:
-     filters:
-       vpc-id: "{{ vpc.vpcs[0].id }}"
-   register: subnets
+# - name: Get vpc subnet facts
+#   ec2_vpc_subnet_facts:
+#     filters:
+#       vpc-id: "{{ vpc_id }}"
+#   register: subnets
 
  - name: Create a subnet group for caches
    elasticache_subnet_group:
      state: present
      name: "navi-web-redis-subnet-group"
      description: "Redis eu-west-1 subnet group"
-     subnets:
-      - "{{ subnets.subnets[0].id }}"
-      - "{{ subnets.subnets[1].id }}"
+     subnets: "{{ subnets }}"
+#      - "{{ subnets[0] }}"
+#      - "{{ subnets[1] }}"
      region: eu-west-1
 
  - name: Create the Redis instance for

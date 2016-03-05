@@ -1,16 +1,10 @@
 ---
- - name: Get vpc facts
-   ec2_vpc_net_facts:
-     filters:
-       "tag:Name": naviworld-dev-vpc
-   register: vpc
-
  - name: Create security group for web app
    ec2_group:
      state: present
      name: navi-web
      description: security group for web app
-     vpc_id: "{{ vpc.vpcs[0].id }}"
+     vpc_id: "{{ vpc_id }}"
      rules:
        - proto: tcp
          from_port: 80

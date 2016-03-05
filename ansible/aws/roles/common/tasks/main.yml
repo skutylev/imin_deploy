@@ -5,7 +5,7 @@
   tags: swap
 
 - name: Ensure bash and OpenSSl and libssl are the latest versions
-  apt: "name={{ item }} update_cache={{ update_apt_cache }} state=latest"
+  apt: "name={{ item }} update_cache=yes state=latest"
   sudo: yes
   with_items:
     - bash
@@ -15,7 +15,7 @@
   tags: packages
 
 - name: Install base packages
-  apt: "name={{ item }} update_cache={{ update_apt_cache }} force=yes state=installed"
+  apt: "name={{ item }} update_cache=yes force=yes state=installed"
   sudo: yes
   with_items:
     - build-essential
@@ -29,7 +29,3 @@
     - python-virtualenv
   tags: packages
 
-- name: Install newrelic
-  pip: name=newrelic executable=pip3
-  sudo: yes
-  tags: packages

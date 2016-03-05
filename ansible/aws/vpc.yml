@@ -1,0 +1,26 @@
+- hosts: aws
+  vars_files:
+  - vars/settings.yml
+  roles:
+  - vpc
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
