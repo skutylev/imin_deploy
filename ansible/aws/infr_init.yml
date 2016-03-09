@@ -1,0 +1,10 @@
+- hosts: aws
+   vars_files:
+     - vars/settings.yml
+   roles:
+     - ami_find
+     - key_pairs
+     - security_group
+     - vpc
+     - route53
+     - redis

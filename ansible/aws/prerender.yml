@@ -43,3 +43,19 @@
      - vars/settings.yml
    roles:
      - common
+   tasks:
+     - name: Install Node.js
+       apt: name=nodejs update_cache=yes state=installed
+     - name: Install nmp
+       apt: name=npm state=installed
+     - name: Clone git repo prerender.io
+       git: 
+         repo: https://github.com/prerender/prerender.git
+         dest: /prerender
+         force: yes
+         accept_hostkey: yes
+     - name: Install prerender.io
+       npm: 
+         path: "/prerender"
+         state: present
+       
