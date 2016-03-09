@@ -1,5 +1,0 @@
----
-- name: make sure gunicorn is running
-  service: name=gunicorn_start state=running
-  notify:
-    - restart gunicorn

@@ -1,7 +1,0 @@
----
-- name: Install packages required by the Flask app inside virtualenv
-  sudo: yes
-  pip: "virtualenv={{ virtualenv_path }} requirements={{ requirements_file }} virtualenv_command=virtualenv state=present"
-
-- name: Ensure existence log dir
-  file: path={{ application_path }}/logs owner=root group=root mode=0774 state=directory

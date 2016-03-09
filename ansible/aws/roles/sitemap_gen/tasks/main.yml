@@ -1,5 +1,0 @@
----
-- name: initial gen sitemap for Petrozavodsk only
-  raw: '{{ virtualenv_path }}/bin/python {{ application_path }}/app/sitemap.py'
-
-

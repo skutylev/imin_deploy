@@ -1,0 +1,19 @@
+company: navi
+env: staging # staging, develop, production
+server_role: web
+
+project_name: naviaddress
+application_name: naviplace
+
+git_repo: ssh://git@github.com/naviworld/NaviPlace.git
+git_ssh_pub_key: ~/.ssh/id_rsa.pub
+git_ssh_priv_key: ~/.ssh/id_rsa
+branch: develop
+gunicorn_num_workers: 3
+gunicorn_max_requests: 0
+nginx_server_name: "naviaddress.com"
+uwsgi_port: 9000
+flask_settings_file: settings
+flask_wsgi_module: wsgi
+flask_secret_key: "zt^1+juv712ta$p0!4%%&sohr^d$_f*8&ru)8=s(_=u4%kdpt#"
+ssl_certificate_id: "arn:aws:iam::992888348717:server-certificate/naviaddress.com"
