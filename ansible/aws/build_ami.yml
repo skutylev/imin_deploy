@@ -29,6 +29,7 @@
 
  - hosts: just_created
    remote_user: ubuntu
+   become: yes
    vars_files:
     - env_vars/base.yml
     - vars/settings.yml
