@@ -1,6 +1,6 @@
 ---
 - name: Install Nginx
-  apt: name=nginx update_cache={{ update_apt_cache }} state=installed
+  apt: name=nginx update_cache=yes state=installed
   tags: packages
 
 - name: Create the Nginx configuration file
