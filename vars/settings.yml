@@ -1,1 +1,18 @@
-# temp settings for aws infrastructure
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-e9f0ff8c"
+subnets: 
+  - "subnet-d0cc3db4"
+  - "subnet-cf4e57b8"
+
+group_id: sg-4b83822f
+ami_id: "ami-f95ef58a"
+
+lb_name: "navi-web-lb"
+
+app_image_id: ami-bf4bf3cc
+lc_suffix: 1457564277
+
