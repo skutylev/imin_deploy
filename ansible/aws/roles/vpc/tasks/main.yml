@@ -31,4 +31,3 @@
          - "{{ vpc.subnets.0.id }}"
          - "{{ vpc.subnets.1.id }}"
      create: true
-
