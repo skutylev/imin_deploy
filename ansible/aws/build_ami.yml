@@ -62,7 +62,7 @@
      lineinfile:
        dest: vars/settings.yml
        line: |
-           image_id: {{ amioutput.image_id }}
+           app_image_id: {{ amioutput.image_id }}
            lc_suffix: {{ ansible_date_time.epoch }}
        state: present
      when: deploy is defined and deploy|bool == True
