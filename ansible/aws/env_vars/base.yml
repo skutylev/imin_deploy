@@ -39,3 +39,11 @@ AWS_ELB_HEALTH_CHECK:
         interval: 30 # seconds
         unhealthy_threshold: 2
         healthy_threshold: 10
+
+project_name: naviaddress
+application_name: naviplace
+
+git_repo: ssh://git@github.com/naviworld/NaviPlace.git
+git_ssh_pub_key: ~/.ssh/id_rsa.pub
+git_ssh_priv_key: ~/.ssh/id_rsa
+branch: develop
