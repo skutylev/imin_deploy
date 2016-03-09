@@ -44,3 +44,6 @@ subnets:
 
 lb_name: "navi-web-lb"
 
+image_id: ami-9060d8e3
+lc_suffix: 1457532775
+

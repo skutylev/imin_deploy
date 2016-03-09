@@ -2,5 +2,5 @@
   vars_files:
   - vars/settings.yml
   roles:
-  - infra
+#  - infra
   - dual_asg
