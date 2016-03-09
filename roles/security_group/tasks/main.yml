@@ -4,7 +4,7 @@
      state: present
      name: navi-web
      description: security group for web app
-     vpc_id: "{{ vpc_id }}"
+     vpc_id: "{{ vpc.vpc_id }}"
      rules:
        - proto: tcp
          from_port: 80

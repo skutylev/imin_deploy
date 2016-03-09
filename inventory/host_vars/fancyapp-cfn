@@ -1,4 +1,0 @@
-app_name: rollingAMI
-lb_name: rollingAMI-CFN
-load_balancers: 
-- rollingAMI-CFN
