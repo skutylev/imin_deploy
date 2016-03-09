@@ -6,8 +6,8 @@
     image_id: "{{ image_id }}"
     key_name: "{{ key_name }}"
     region: "{{ region }}"
-    security_groups: "{{ lc_security_groups }}"
-    instance_type: "{{ instance_type }}"
+    security_groups: "{{ group_id }}"
+    instance_type: "t2.micro"
     assign_public_ip: yes
   tags: launch_config
 
