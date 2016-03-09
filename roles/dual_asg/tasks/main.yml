@@ -3,7 +3,7 @@
 - name: create launch config
   ec2_lc:
     name: "{{ lc_name }}"
-    image_id: "{{ image_id }}"
+    image_id: "{{ app_image_id }}"
     key_name: "{{ key_name }}"
     region: "{{ region }}"
     security_groups: "{{ group_id }}"
