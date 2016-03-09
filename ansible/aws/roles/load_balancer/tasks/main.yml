@@ -1,0 +1,28 @@
+ - name: launch load balancer
+   ec2_elb_lb:
+     name: "navi-web-lb"
+     region: "{{ region }}"
+     state: present
+     subnets: "{{ subnets }}"
+     connection_draining_timeout: 60
+     listeners:
+       - protocol: http
+         load_balancer_port: 80
+         instance_port: 80
+     health_check:
+         ping_protocol: http
+         ping_port: 80
+         ping_path: "/"
+         response_timeout: 5
+         interval: 30
+         unhealthy_threshold: 3
+         healthy_threshold: 3
+   register: load_balancer
+ - debug: var=load_balancer
+
+ - name: Add load_balancer name in var file
+   lineinfile:
+     dest: vars/settings.yml
+     line: |
+         lb_name: "{{ load_balancer.name }}"
+     create: true

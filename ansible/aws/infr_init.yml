@@ -4,7 +4,8 @@
    roles:
      - ami_find
      - key_pairs
-     - security_group
      - vpc
+     - security_group
      - route53
      - redis
+     - load_balancer

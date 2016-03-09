@@ -1,6 +1,0 @@
- - hosts: aws
-   vars_files:
-     - vars/settings.yml
-   roles:
-     - key_pairs
-   run_once: true

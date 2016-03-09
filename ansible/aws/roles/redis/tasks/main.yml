@@ -17,8 +17,6 @@
      name: "navi-web-redis-subnet-group"
      description: "Redis eu-west-1 subnet group"
      subnets: "{{ subnets }}"
-#      - "{{ subnets[0] }}"
-#      - "{{ subnets[1] }}"
      region: eu-west-1
 
  - name: Create the Redis instance for
