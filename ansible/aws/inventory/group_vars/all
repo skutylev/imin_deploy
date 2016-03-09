@@ -8,9 +8,9 @@ lc_security_groups:
 asg_subnets:
 - "{{ vpc.subnets[0].id }}"
 - "{{ vpc.subnets[1].id }}"
-asg_desired_capacity: 5
-asg_min_size: 5
-asg_max_size: 10
+asg_desired_capacity: 2
+asg_min_size: 2
+asg_max_size: 4
 vpc_subnets:
   - cidr: 172.22.1.0/24
     resource_tags: { "Name":"{{ app_name }}-1" }
