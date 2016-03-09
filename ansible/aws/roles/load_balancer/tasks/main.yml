@@ -1,4 +1,4 @@
- - name: launch load balancer
+ - name: Launch load balancer
    ec2_elb_lb:
      name: "navi-web-lb"
      region: "{{ region }}"
@@ -18,11 +18,21 @@
          unhealthy_threshold: 3
          healthy_threshold: 3
    register: load_balancer
- - debug: var=load_balancer
 
  - name: Add load_balancer name in var file
    lineinfile:
      dest: vars/settings.yml
      line: |
-         lb_name: "{{ load_balancer.name }}"
+         lb_name: "{{ load_balancer.elb.name }}"
      create: true
+
+ - name: Register CNAME record for web-app balancer
+   route53:
+     command: create
+     zone: naviaddress.local
+     record: www.naviaddress.local
+     type: CNAME
+     ttl: 7200
+     value: "{{ load_balancer.elb.dns_name }}"
+     overwrite: yes
+

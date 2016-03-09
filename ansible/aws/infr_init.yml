@@ -1,11 +1,11 @@
 - hosts: aws
-   vars_files:
-     - vars/settings.yml
-   roles:
-     - ami_find
-     - key_pairs
-     - vpc
-     - security_group
-     - route53
-     - redis
-     - load_balancer
+  vars_files:
+    - vars/settings.yml
+  roles:
+    - ami_find
+    - key_pairs
+    - vpc
+    - security_group
+    - route53
+    - redis
+    - load_balancer
