@@ -17,3 +17,6 @@ flask_settings_file: settings
 flask_wsgi_module: wsgi
 flask_secret_key: "zt^1+juv712ta$p0!4%%&sohr^d$_f*8&ru)8=s(_=u4%kdpt#"
 ssl_certificate_id: "arn:aws:iam::992888348717:server-certificate/naviaddress.com"
+public_domain: "naviaddress.com"
+subdomain: "www"
+private_domain: "naviaddress.local"

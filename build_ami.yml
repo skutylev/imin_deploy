@@ -51,12 +51,12 @@
        wait: yes
      register: amioutput
 
-   - name: terminate temporary instance
-     action:
-       module: ec2
-       state: absent
-       region: "{{ region }}"
-       instance_ids: "{{ ami_instance.tagged_instances.0.id }}"
+#   - name: terminate temporary instance
+#     action:
+#       module: ec2
+#       state: absent
+#       region: "{{ region }}"
+#       instance_ids: "{{ ami_instance.tagged_instances.0.id }}"
 
    - name: Add image_id in lc_suffix in var file
      lineinfile:

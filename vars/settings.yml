@@ -13,6 +13,6 @@ ami_id: "ami-f95ef58a"
 
 lb_name: "navi-web-lb"
 
-app_image_id: ami-bf4bf3cc
-lc_suffix: 1457564277
+app_image_id: ami-660db515
+lc_suffix: 1457618746
 

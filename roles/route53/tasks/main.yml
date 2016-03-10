@@ -2,7 +2,14 @@
  - name: Create naviaddress.local dns zone
    route53_zone:
      vpc_id: "{{ vpc.vpc_id }}"
-#     vpc_region: "{{ ec2_region }}"
-     zone: "{{ vpc_dns_zone }}"
+     vpc_region: "eu-west-1"
+     zone: "{{ private_domain }}"
      state: present
    register: zone_out
+
+ - name: Create naviaddress.local dns zone
+   route53_zone:
+     zone: "{{ public_domain }}"
+     state: present
+   register: zone_out
+

@@ -17,12 +17,14 @@
      health_check:
          ping_protocol: http
          ping_port: 80
-         ping_path: "/"
+         ping_path: "/about"
          response_timeout: 5
          interval: 30
-         unhealthy_threshold: 3
-         healthy_threshold: 3
+         unhealthy_threshold: 2
+         healthy_threshold: 10
    register: load_balancer
+   
+   debug: var=load_balancer   
 
  - name: Add load_balancer name in var file
    lineinfile:
@@ -34,10 +36,21 @@
  - name: Register CNAME record for web-app balancer
    route53:
      command: create
-     zone: naviaddress.local
-     record: www.naviaddress.local
+     zone: "{{ public_domain }}"
+     record: "{{ subdomain}}.{{ public_domain }}"
      type: CNAME
      ttl: 7200
      value: "{{ load_balancer.elb.dns_name }}"
      overwrite: yes
 
+ - name: Regiser A recod fo web-app balancer
+   route53:
+     command: create
+     zone: "{{ public_domain }}
+     record: "{{ public_domain }}"
+     alias: true
+     alias_hosted_zone_id="{{ load_balancer.elb.zone_id }}"
+     type: A
+     value: "{{ load_balancer.elb.dns_name }}"
+     overwrite: yes
+     when: subdomain == 'www'
