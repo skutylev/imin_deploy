@@ -24,8 +24,6 @@
          healthy_threshold: 10
    register: load_balancer
    
-   debug: var=load_balancer   
-
  - name: Add load_balancer name in var file
    lineinfile:
      dest: vars/settings.yml
@@ -46,11 +44,13 @@
  - name: Regiser A recod fo web-app balancer
    route53:
      command: create
-     zone: "{{ public_domain }}
+     zone: "{{ public_domain }}"
      record: "{{ public_domain }}"
      alias: true
-     alias_hosted_zone_id="{{ load_balancer.elb.zone_id }}"
+     alias_hosted_zone_id: "{{ load_balancer.elb.hosted_zone_id }}"
+#     alias_ealuate_target_health: true
      type: A
      value: "{{ load_balancer.elb.dns_name }}"
      overwrite: yes
-     when: subdomain == 'www'
+   when: subdomain == 'www'
+

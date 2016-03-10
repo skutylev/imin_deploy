@@ -21,12 +21,18 @@
      wait: yes
    register: cache
 
- - name: Register CNAME for elasticache
+ - name: "Register CNAME for elasticache in {{ private_domain }}"
    route53:
      command: create
      zone: "{{ private_domain }}"
+     hosted_zone_id: "{{ zone_out_private.set.zone_id }}"
      record: "cache.{{ private_domain }}"
      type: CNAME
      ttl: 7200
      value: "{{ cache.elasticache.data.CacheNodes[0].Endpoint.Address  }}"
      overwrite: yes
+     private_zone: true
+
+
+
+
