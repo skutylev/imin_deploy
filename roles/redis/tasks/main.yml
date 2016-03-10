@@ -1,35 +1,23 @@
 ---
-# - name: Get vpc facts
-#   ec2_vpc_net_facts:
-#     filters:
-#       "tag:Name": naviworld-dev-vpc
-#   register: vpc
-
-# - name: Get vpc subnet facts
-#   ec2_vpc_subnet_facts:
-#     filters:
-#       vpc-id: "{{ vpc_id }}"
-#   register: subnets
-
  - name: Create a subnet group for caches
    elasticache_subnet_group:
      state: present
      name: "navi-web-redis-subnet-group"
      description: "Redis eu-west-1 subnet group"
      subnets: "{{ subnets }}"
-     region: eu-west-1
+     region: "eu-west-1"
 
  - name: Create the Redis instance for
    elasticache:
      name: "navi-web-redis"
      state: present
      engine: redis
-     node_type: cache.m3.medium
+     node_type: cache.t2.micro
      num_nodes: 1
      region: eu-west-1
      zone: eu-west-1a
+     cache_subnet_group: "navi-web-redis-subnet-group"
      hard_modify: true
-#     cache_subnet_group: "navi-web-redis-subnet-group"
      wait: yes
    register: cache
 
@@ -42,4 +30,3 @@
      ttl: 7200
      value: "{{ cache.elasticache.data.CacheNodes[0].Endpoint.Address  }}"
      overwrite: yes
-#     wait: yes
