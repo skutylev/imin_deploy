@@ -1,5 +1,5 @@
 company: navi
-env: staging # staging, develop, production
+env: staging # staging, develop, production todo
 server_role: web
 
 project_name: naviaddress
@@ -18,5 +18,5 @@ flask_wsgi_module: wsgi
 flask_secret_key: "zt^1+juv712ta$p0!4%%&sohr^d$_f*8&ru)8=s(_=u4%kdpt#"
 ssl_certificate_id: "arn:aws:iam::992888348717:server-certificate/naviaddress.com"
 public_domain: "naviaddress.com"
-subdomain: "www"
+subdomain: "www" # www, staging-web (if staging-web, r53 create only 1 CNAME (staging-web.naviaddress.com) to ELB, if www 1 CNAME (www.naviaddress.com) and 1 A (naviaddress.com) to ELB
 private_domain: "naviaddress.local"
