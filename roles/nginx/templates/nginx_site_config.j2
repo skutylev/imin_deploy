@@ -1,6 +1,5 @@
 upstream wsgi_server {
     server 127.0.0.1:8000;
-    #server unix:{{ virtualenv_path }}/run/gunicorn.sock fail_timeout=0;
 }
 
 server {
@@ -45,21 +44,38 @@ server {
     }
 
     location / {
-        if (-f {{ virtualenv_path }}/maintenance_on.html) {
+        if (-f /webapps/naviplace/maintenance_on.html) {
             return 503;
         }
-
-        proxy_set_header X-Real-IP $remote_addr;
-        proxy_set_header X-Forwarded-For $proxy_add_x_forwarded_for;
-        proxy_set_header X-Forwarded-Proto https;
-        proxy_set_header Host $http_host;
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Host $server_name;
         proxy_redirect off;
 
-        # Try to serve static files from nginx, no point in making an
-        # *application* server like Unicorn/Rainbows! serve static files.
-        if (!-f $request_filename) {
-            proxy_pass http://wsgi_server;
-            break;
+        set $prerender 0;
+        if ($http_user_agent ~* "baiduspider|twitterbot|facebookexternalhit|rogerbot|linkedinbot|embedly|quora link preview|showyoubot|outbrain|pinterest|s$
+            set $prerender 1;
+        }
+        if ($args ~ "_escaped_fragment_") {
+            set $prerender 1;
+        }
+        if ($http_user_agent ~ "Prerender") {
+            set $prerender 0;
+        }
+        if ($uri ~ "\.(js|css|xml|less|png|jpg|jpeg|gif|pdf|doc|txt|ico|rss|zip|mp3|rar|exe|wmv|doc|avi|ppt|mpg|mpeg|tif|wav|mov|psd|ai|xls|mp4|m4a|swf|dat$
+            set $prerender 0;
+        }
+
+        if ($prerender = 1) {
+            #setting prerender as a variable forces DNS resolution since nginx caches IPs and doesnt play well with load balancing
+            set $prerender "prerender.naviaddress.local";
+            rewrite .* /$scheme://$host$request_uri? break;
+            proxy_pass http://$prerender;
+        }
+        if ($prerender = 0) {
+                proxy_pass http://wsgi_server;
+                break;
         }
     }
 
