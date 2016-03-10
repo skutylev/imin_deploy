@@ -3,16 +3,116 @@ ami_id: "ami-f95ef58a"
 key_name: "navi-web"
 private_key_path: "~/.ssh/id_rsa_navi"
 
-vpc_id: "vpc-e9f0ff8c"
+vpc_id: "vpc-6b36380e"
 subnets: 
-  - "subnet-d0cc3db4"
-  - "subnet-cf4e57b8"
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
 
-group_id: sg-4b83822f
+group_id: sg-2d515249
 ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-6b36380e"
+subnets: 
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
+
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-6b36380e"
+subnets: 
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
+
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-6b36380e"
+subnets: 
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
+
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-6b36380e"
+subnets: 
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
+
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-6b36380e"
+subnets: 
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
+
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-6b36380e"
+subnets: 
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
+
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-6b36380e"
+subnets: 
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
+
+ami_id: "ami-f95ef58a"
+
+key_name: "navi-web"
+private_key_path: "~/.ssh/id_rsa_navi"
+
+vpc_id: "vpc-6b36380e"
+subnets: 
+  - "subnet-3896665c"
+  - "subnet-0ee7fe79"
 
 lb_name: "navi-web-lb"
 
-app_image_id: ami-660db515
-lc_suffix: 1457618746
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
+
+lb_name: "navi-web-lb"
 
