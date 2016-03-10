@@ -1,118 +1,20 @@
 ami_id: "ami-f95ef58a"
 
+group_id: "sg-2d515249"
+
 key_name: "navi-web"
 private_key_path: "~/.ssh/id_rsa_navi"
+
+lb_name: "navi-web-lb"
 
 vpc_id: "vpc-6b36380e"
 subnets: 
   - "subnet-3896665c"
   - "subnet-0ee7fe79"
 
-group_id: sg-2d515249
-ami_id: "ami-f95ef58a"
+app_image_id: ami-1900b86a
+lc_suffix: 1457629662
 
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-ami_id: "ami-f95ef58a"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-vpc_id: "vpc-6b36380e"
-subnets: 
-  - "subnet-3896665c"
-  - "subnet-0ee7fe79"
-
-ami_id: "ami-f95ef58a"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-vpc_id: "vpc-6b36380e"
-subnets: 
-  - "subnet-3896665c"
-  - "subnet-0ee7fe79"
-
-ami_id: "ami-f95ef58a"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-vpc_id: "vpc-6b36380e"
-subnets: 
-  - "subnet-3896665c"
-  - "subnet-0ee7fe79"
-
-ami_id: "ami-f95ef58a"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-vpc_id: "vpc-6b36380e"
-subnets: 
-  - "subnet-3896665c"
-  - "subnet-0ee7fe79"
-
-ami_id: "ami-f95ef58a"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-vpc_id: "vpc-6b36380e"
-subnets: 
-  - "subnet-3896665c"
-  - "subnet-0ee7fe79"
-
-ami_id: "ami-f95ef58a"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-vpc_id: "vpc-6b36380e"
-subnets: 
-  - "subnet-3896665c"
-  - "subnet-0ee7fe79"
-
-ami_id: "ami-f95ef58a"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-vpc_id: "vpc-6b36380e"
-subnets: 
-  - "subnet-3896665c"
-  - "subnet-0ee7fe79"
-
-ami_id: "ami-f95ef58a"
-
-key_name: "navi-web"
-private_key_path: "~/.ssh/id_rsa_navi"
-
-vpc_id: "vpc-6b36380e"
-subnets: 
-  - "subnet-3896665c"
-  - "subnet-0ee7fe79"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
-
-lb_name: "navi-web-lb"
+app_image_id: ami-e302ba90
+lc_suffix: 1457635075
 
