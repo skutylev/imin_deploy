@@ -1,6 +1,7 @@
  - hosts: aws
    vars_files:
     - vars/settings.yml
+    - env_vars/base.yml
    tasks:
     - name: Create prerender instance
       ec2:
@@ -31,7 +32,7 @@
         command: create
         zone: "{{ private_domain }}"
         record: "prerender.{{ private_domain }}"
-        #hosted_zone_id: "{{ zone_out_private.set.zone_id }}"
+       # hosted_zone_id: "Z27RHZ5N111GQK"
         type: CNAME
         ttl: 7200
         value: "{{ prerender.tagged_instances.0.public_dns_name }}"
@@ -46,10 +47,12 @@
    roles:
      - common
    tasks:
+     - name: Add node.js 5 repo
+       shell: "curl -sL https://deb.nodesource.com/setup_5.x | sudo -E bash -"
      - name: Install Node.js
        apt: name=nodejs update_cache=yes state=installed
-     - name: Install nmp
-       apt: name=npm state=installed
+     - name: Install libfontconfig
+       apt: name=libfontconfig state=installed
      - name: Clone git repo prerender.io
        git: 
          repo: https://github.com/prerender/prerender.git
