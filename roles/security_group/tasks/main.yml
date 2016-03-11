@@ -1,9 +1,10 @@
 ---
- - name: Create security group for web app
+ - name: Create security group for "{{ company }}-{{ server_role }}-{{ env }}"
    ec2_group:
      state: present
-     name: navi-web
-     description: security group for web app
+     name: "{{ company }}-{{ server_role }}-{{ env }}-sg"
+     description: "allow http, https, ssh - any, prerender, cache - sg"
+     region: "{{ region }}"
      vpc_id: "{{ vpc.vpc_id }}"
      rules:
        - proto: tcp
@@ -18,6 +19,14 @@
          from_port: 443
          to_port: 443
          cidr_ip: 0.0.0.0/0
+       - proto: tcp
+         from_port: 6379
+         to_port: 6379
+         group_name: "{{ company }}-{{ server_role }}-{{ env }}-sg"
+       - proto: tcp
+         from_port: 3000
+         to_port: 3000
+         group_name: "{{ company }}-{{ server_role }}-{{ env }}-sg"
    register: sg
 
  - name: Add security group id in var file

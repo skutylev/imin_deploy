@@ -1,15 +1,15 @@
 ---
- - name: Create a subnet group for caches
+ - name: "Create a subnet group for caches for {{ company }}-{{ server_role }}-{{ env }}"
    elasticache_subnet_group:
      state: present
-     name: "navi-web-redis-subnet-group"
-     description: "Redis eu-west-1 subnet group"
+     name: "{{ company }}-{{ server_role }}-{{ env }}-redis-subnet-group"
+     description: "subnet group for redis for {{ company }}-{{ server_role }}-{{ env }} in {{ region }}"
      subnets: "{{ subnets }}"
-     region: "eu-west-1"
+     region: "{{ region }}"
 
- - name: Create the Redis instance for
+ - name: "Create the Redis instance for {{ company }}-{{ server_role }}-{{ env }}"
    elasticache:
-     name: "navi-web-redis"
+     name: "{{ server_role }}-redis"
      state: present
      engine: redis
      node_type: cache.t2.micro
@@ -17,7 +17,7 @@
      region: eu-west-1
      zone: eu-west-1a
      security_group_ids: "{{ group_id }}"
-     cache_subnet_group: "navi-web-redis-subnet-group"
+     cache_subnet_group: "{{ company }}-{{ server_role }}-{{ env }}-redis-subnet-group"
      hard_modify: true
      wait: yes
    register: cache

@@ -1,16 +1,16 @@
 ---
- - name: Create VPC
+ - name: "Create VPC for {{ company }}-{{ server_role }}-{{ env }}"
    ec2_vpc:
      state: present
      cidr_block: 172.22.0.0/16
-     resource_tags: { "Environment":"{{ app_name }}-vpc" }
+     resource_tags: { "Environment":"{{ company }}-{{ server_role }}-{{ env }}-vpc" }
      subnets:
        - cidr: 172.22.1.0/24
          az: eu-west-1a
-         resource_tags: { "Name":"{{ app_name }}-1" }
+         resource_tags: { "Name":"{{ company }}-{{ server_role }}-{{ env }}-subnet-1" }
        - cidr: 172.22.2.0/24
          az: eu-west-1b
-         resource_tags: { "Name":"{{ app_name }}-2" }
+         resource_tags: { "Name":"{{ company }}-{{ server_role }}-{{ env }}-subnet-2" }
      internet_gateway: True
      route_tables:
        - subnets:

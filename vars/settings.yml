@@ -1,17 +1,17 @@
-
-group_id: sg-622c2d06
 ami_id: "ami-f95ef58a"
 
-key_name: "navi-web"
+group_id: sg-93e2e0f7
+
+vpc_id: "vpc-fc0c0599"
+subnets: 
+  - "subnet-f51222ac"
+  - "subnet-f654a492"
+
+lb_name: "navi-web-production-lb"
+
+key_name: "navi-web-production-key"
 private_key_path: "~/.ssh/id_rsa_navi"
 
-vpc_id: "vpc-94dbd4f1"
-subnets: 
-  - "subnet-d4ac9a8d"
-  - "subnet-a8e716cc"
-
-lb_name: "navi-web-lb"
-
-app_image_id: ami-39d76c4a
-lc_suffix: 1457678426
+app_image_id: ami-58ba012b
+lc_suffix: 1457712848
 

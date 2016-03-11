@@ -1,6 +1,6 @@
- - name: Launch load balancer
+ - name: "Launch load balancer {{ company }}-{{ server_role }}-{{ env }}"
    ec2_elb_lb:
-     name: "navi-web-lb"
+     name: "{{ company }}-{{ server_role }}-{{ env }}-lb"
      region: "{{ region }}"
      state: present
      subnets: "{{ subnets }}"

@@ -1,6 +1,6 @@
- - name: Create ec2 key pair
+ - name: "Create ec2 key pair for {{ company }}-{{ server_role }}-{{ env }}"
    ec2_key:
-     name: navi-web
+     name: "{{ company }}-{{ server_role }}-{{ env }}-key"
      state: present
    register: key
 

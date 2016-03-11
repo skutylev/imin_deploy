@@ -2,7 +2,7 @@
  - name: "Create {{ private_domain }} dns zone"
    route53_zone:
      vpc_id: "{{ vpc.vpc_id }}"
-     vpc_region: "eu-west-1"
+     vpc_region: "{{ region }}"
      zone: "{{ private_domain }}"
      state: present
    register: zone_out_private

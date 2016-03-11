@@ -14,7 +14,7 @@
   ec2_asg:
     name: "{{ asg_group_name }}"
     health_check_period: 60
-    load_balancers: "navi-web-lb"
+    load_balancers: "{{ company }}-{{ server_role }}-{{ env }}-lb"
     health_check_type: ELB
     availability_zones: "{{ availability_zones | join(',')}}"
     launch_config_name: "{{ lc_name }}"
