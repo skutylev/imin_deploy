@@ -11,9 +11,7 @@ subnets:
   - "subnet-a8e716cc"
 
 lb_name: "navi-web-lb"
-app_image_id: ami-6ffc471c
-lc_suffix: 1457648118
 
-app_image_id: ami-38fc474b
-lc_suffix: 1457649750
+app_image_id: ami-39d76c4a
+lc_suffix: 1457678426
 

@@ -16,6 +16,7 @@
      num_nodes: 1
      region: eu-west-1
      zone: eu-west-1a
+     security_group_ids: "{{ group_id }}"
      cache_subnet_group: "navi-web-redis-subnet-group"
      hard_modify: true
      wait: yes
@@ -25,7 +26,7 @@
    route53:
      command: create
      zone: "{{ private_domain }}"
-     hosted_zone_id: "{{ zone_out_private.set.zone_id }}"
+#     hosted_zone_id: "{{ zone_out_private.set.zone_id }}"
      record: "cache.{{ private_domain }}"
      type: CNAME
      ttl: 7200
