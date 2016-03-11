@@ -10,8 +10,7 @@ server {
     proxy_set_header            X-Real-IP        $remote_addr;
     proxy_set_header            X-Forwarded-For  $proxy_add_x_forwarded_for;
     keepalive_timeout           70;
-    resolver                    8.8.4.4 8.8.8.8 valid=300s;
-    resolver_timeout            5s;
+    resolver                    8.8.8.8;
 
     server_name_in_redirect         off;
     charset                         utf-8;
@@ -52,6 +51,7 @@ server {
         proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
         proxy_set_header   X-Forwarded-Host $server_name;
         proxy_redirect off;
+        resolver                    8.8.8.8;
 
         set $prerender 0;
         if ($http_user_agent ~* "baiduspider|twitterbot|facebookexternalhit|rogerbot|linkedinbot|embedly|quora link preview|showyoubot|outbrain|pinterest|slackbot|vkShare|W3C_Validator") {
@@ -69,7 +69,7 @@ server {
 
         if ($prerender = 1) {
             #setting prerender as a variable forces DNS resolution since nginx caches IPs and doesnt play well with load balancing
-            set $prerender "prerender.naviaddress.local";
+            set $prerender "prerender.naviaddress.local:3000";
             rewrite .* /$scheme://$host$request_uri? break;
             proxy_pass http://$prerender;
         }
@@ -89,6 +89,5 @@ server {
     location = /maintenance_on.html {
         root {{ virtualenv_path }}/;
     }
-
 
 }
