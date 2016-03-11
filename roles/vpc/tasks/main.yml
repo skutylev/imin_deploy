@@ -22,7 +22,7 @@
      region: eu-west-1
    register: vpc
 
- - name: Add key pair name in var file
+ - name: Add VPC id and subnets in var file
    lineinfile:
      dest: vars/settings.yml
      line: |

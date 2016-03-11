@@ -20,5 +20,4 @@
        {{ key.key.private_key }}
      create: true
      mode: 0600
-   run_once: true
    when: download_key is defined and download_key|bool == True

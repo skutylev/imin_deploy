@@ -1,6 +1,0 @@
-- hosts: aws
-  vars_files:
-    - vars/settings.yml
-    - env_vars/base.yml
-  roles:
-    - load_balancer

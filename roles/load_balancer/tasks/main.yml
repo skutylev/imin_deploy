@@ -53,4 +53,3 @@
      value: "{{ load_balancer.elb.dns_name }}"
      overwrite: yes
    when: subdomain == 'www'
-
