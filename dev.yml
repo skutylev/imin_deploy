@@ -1,0 +1,9 @@
+- hosts: all
+  vars_files:
+    - vars/settings.yml
+    - env_vars/base.yml
+  roles:
+    - common
+    - nginx
+    - gunicorn
+
