@@ -4,11 +4,11 @@
   command: "npm install"
   args:
     chdir: "{{ application_path }}/app/static/"
-  become_user: naviplace
+#  become_user: naviplace
 
 - name: webpack | Build bundle
   command: node_modules/.bin/webpack
   args:
     chdir: "{{ application_path }}/app/static/"
-  become_user: naviplace
+#  become_user: naviplace
   notify: restart application
