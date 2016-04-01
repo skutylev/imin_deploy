@@ -3,5 +3,5 @@
 nodejs_nodesource_pin_priority: 500
 
 # 0.10 or 0.12 or 4.x
-nodejs_version: "5.9.1"
+nodejs_version: "5.*"
 debian_repo_version: "5.x"
