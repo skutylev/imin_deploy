@@ -7,11 +7,11 @@
       ec2:
         assign_public_ip: yes
         region: "{{ region }}"
-        key_name: "{{ key_name }}"
-        group_id: "{{ group_id }}"
+        key_name: "navi-web-production-key"
+        group_id: "sg-88554fec"
         instance_type: t2.micro
-        vpc_subnet_id: "{{ subnets.0 }}"
-        image: "{{ ami_id }}"
+        vpc_subnet_id: "subnet-5c247905"
+        image: "ami-f95ef58a"
         wait: yes
         wait_timeout: 50
         exact_count: 1
@@ -20,19 +20,17 @@
         instance_tags:
           role: ami_builder
       register: ami_instance
-    debug: var=ami_instance
+    - debug: var=ami_instance
 
-    - name: "Register CNAME for elasticache in {{ private_domain }}"
+    - name: "Register CNAME for elasticache in {{ public_domain }}"
       route53:
        command: create
        zone: "{{ public_domain }}"
-       record: "staging-web.{{ public_domain }}"
+       record: "staging-web1.{{ public_domain }}"
        type: CNAME
        ttl: 7200
-       value: "{{ ami_instance.ec2_dns_name }}"
+       value: "{{ ami_instance.tagged_instances[0].public_dns_name }}"
        overwrite: yes
-
-
 
     - name: Wait for SSH to start
       wait_for: host={{ ami_instance.tagged_instances.0.public_ip }} port=22 delay=60 timeout=180 state=started
