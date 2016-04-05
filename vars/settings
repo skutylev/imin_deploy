@@ -1,0 +1,13 @@
+ami_id: "ami-f95ef58a"
+
+group_id: sg-93e2e0f7
+
+vpc_id: "vpc-fc0c0599"
+subnets:
+  - "subnet-f51222ac"
+  - "subnet-f654a492"
+
+lb_name: "navi-web-production-lb"
+
+key_name: "navi-web-production-key"
+private_key_path: "~/.ssh/id_rsa_navi"
