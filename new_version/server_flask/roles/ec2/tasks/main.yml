@@ -12,9 +12,9 @@
     wait_timeout: 50
     exact_count: 1
     count_tag:
-      name: "{{ company }}-{{ env }}-{{ role }}"
+      Name: "{{ company }}-{{ env }}-{{ role }}"
     instance_tags:
-      role: "{{ role }}"
-      env: "{{ env }}"
-      name: "{{ company }}-{{ env }}-{{ role }}"
+      Role: "{{ role }}"
+      Env: "{{ env }}"
+      Name: "{{ company }}-{{ env }}-{{ role }}"
   register: ec2_instance
