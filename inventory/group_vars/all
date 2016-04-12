@@ -28,3 +28,7 @@ route_tables:
 
 
 vpc_dns_zone: "naviaddress.local"
+
+app_redis_host: 'cache.naviaddress.local'
+app_auth_token: '1cb7e1cd8e8254f549145691e37be987' 
+app_api_url: 'https://api.naviaddress.com/api/v1'
