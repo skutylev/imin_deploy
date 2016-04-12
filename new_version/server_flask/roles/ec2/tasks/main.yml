@@ -1,21 +1,20 @@
 ---
-tasks:
- - name: "launch instance for staging web app"
-   ec2:
-     assign_public_ip: yes
-     region: "{{ region }}"
-     key_name: "{{ key_name }}"
-     group_id: "{{ sg_id }}"
-     instance_type: "{{ instance_type }}"
-     vpc_subnet_id: "{{ subnet }}"
-     image: "{{ ami_image }}"
-     wait: yes
-     wait_timeout: 50
-     exact_count: 1
-     count_tag:
-       name: "{{ company }}-{{ env }}-{{ role }}"
-     instance_tags:
-       role: "{{ role }}"
-       env: "{{ env }}"
-       name: "{{ company }}-{{ env }}-{{ role }}"
-   register: ec2_instance
+- name: "launch instance for staging web app"
+  ec2:
+    assign_public_ip: yes
+    region: "{{ region }}"
+    key_name: "{{ key_name }}"
+    group_id: "{{ sg_id }}"
+    instance_type: "{{ instance_type }}"
+    vpc_subnet_id: "{{ subnet }}"
+    image: "{{ ami_image }}"
+    wait: yes
+    wait_timeout: 50
+    exact_count: 1
+    count_tag:
+      name: "{{ company }}-{{ env }}-{{ role }}"
+    instance_tags:
+      role: "{{ role }}"
+      env: "{{ env }}"
+      name: "{{ company }}-{{ env }}-{{ role }}"
+  register: ec2_instance
