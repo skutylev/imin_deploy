@@ -5,7 +5,7 @@
     - ec2
     - route53
     
- - hosts: just_created
+ - hosts: just_created_instance
    #remote_user: ubuntu
    become: yes
    vars_files:
