@@ -3,6 +3,7 @@
     - vars/settings.yml
     - env_vars/base.yml
   roles:
+    - nodesource.node
     - common
     - nginx
     - gunicorn
