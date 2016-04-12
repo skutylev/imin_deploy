@@ -3,12 +3,12 @@
 - name: webpack | Ensure dependencies are installed
   command: "npm install"
   args:
-    chdir: "{{ application_path }}/app/static/"
+    chdir: "{{ application_path }}"
 #  become_user: naviplace
 
 - name: webpack | Build bundle
-  command: "node_modules/.bin/webpack -p"
+  command: "make prod"
   args:
-    chdir: "{{ application_path }}/app/static/"
+    chdir: "{{ application_path }}"
 #  become_user: naviplace
   notify: restart application
