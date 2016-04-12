@@ -1,5 +1,5 @@
 ---
- - name: "register CNAME record for {{ ec2_instance.tagged_instances.0.tags.role }} in {{ public_domain }}"
+ - name: "register CNAME record for {{ ec2_instance.tagged_instances.0.tags.Role }} in {{ public_domain }}"
    route53:
     command: create
     zone: "{{ public_domain }}"
