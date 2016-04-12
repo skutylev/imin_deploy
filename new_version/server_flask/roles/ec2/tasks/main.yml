@@ -1,5 +1,5 @@
 ---
-- name: "launch instance for staging web app"
+- name: "launch EC2 instance for {{ company }}-{{ env }}-{{ role }}"
   ec2:
     assign_public_ip: yes
     region: "{{ region }}"
