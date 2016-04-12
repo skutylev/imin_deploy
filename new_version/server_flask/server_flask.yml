@@ -1,0 +1,17 @@
+ - hosts: aws
+   vars_files:
+    - env_vars/main.yml
+   roles:
+    - ec2
+    - route53
+    
+ - hosts: just_created
+   #remote_user: ubuntu
+   become: yes
+   vars_files:
+    - env_vars/main.yml
+   roles:
+    - common
+    - nginx
+    - postgresql
+    - flask_app

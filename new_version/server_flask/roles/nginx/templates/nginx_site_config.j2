@@ -1,0 +1,51 @@
+upstream wsgi_server {
+    server 127.0.0.1:8000;
+}
+
+server {
+    listen                      80;
+    server_name                 {{ nginx_server_name }};
+
+    proxy_set_header            Host             $host;
+    proxy_set_header            X-Real-IP        $remote_addr;
+    proxy_set_header            X-Forwarded-For  $proxy_add_x_forwarded_for;
+    keepalive_timeout           70;
+
+    server_name_in_redirect         off;
+    charset                         utf-8;
+
+    client_max_body_size 4G;
+
+    access_log {{ nginx_access_log_file }};
+    error_log {{ nginx_error_log_file }};
+
+    if ($http_x_forwarded_proto != 'https') {
+        rewrite ^ https://$host$request_uri? permanent;
+    }
+
+    location / {
+
+        if (-f /webapps/naviplace/maintenance_on.html) {
+            return 503;
+        }
+
+        proxy_set_header   Host $host;
+        proxy_set_header   X-Real-IP $remote_addr;
+        proxy_set_header   X-Forwarded-For $proxy_add_x_forwarded_for;
+        proxy_set_header   X-Forwarded-Host $server_name;
+        proxy_redirect off;
+        proxy_pass http://wsgi_server;
+    }
+
+    # Error pages
+    error_page 500 502 504 /500.html;
+    location = /500.html {
+        root {{ application_path }}/app/templates/;
+    }
+
+    error_page 503 /maintenance_on.html;
+    location = /maintenance_on.html {
+        root {{ virtualenv_path }}/;
+    }
+
+}

@@ -1,0 +1,17 @@
+---
+tasks:
+ - name: "register CNAME record for {{ ec2_instance.tagged_instances.0.tags.role }} in {{ public_domain }}"
+   route53:
+    command: create
+    zone: "{{ public_domain }}"
+    record: "{{ subdomain }}.{{ public_domain }}"
+    type: CNAME
+    ttl: 7200
+    value: "{{ ec2_instance.tagged_instances[0].public_dns_name }}"
+    overwrite: yes
+
+ - name: Wait for SSH to start
+   wait_for: host={{ ec2_instance.tagged_instances.0.public_ip }} port=22 timeout=180 state=started
+
+ - name: add host to group
+   add_host: name={{ ec2_instance.tagged_instances.0.public_ip }} groups=just_created_instance

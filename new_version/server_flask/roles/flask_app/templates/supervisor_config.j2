@@ -1,0 +1,8 @@
+[program:{{ application_name }}]
+command = {{ virtualenv_path }}/bin/gunicorn_start
+directory = {{ virtualenv_path }}/naviaddress
+autostart = true
+autorestart = true
+user = root
+stdout_logfile = {{ application_log_file }}
+redirect_stderr = true
