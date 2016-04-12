@@ -5,3 +5,8 @@
 
 - name: Ensure existence log dir
   file: path={{ application_path }}/logs owner=root group=root mode=0774 state=directory
+
+- name: Configure application 
+  template: src=local_settings.py.j2
+            dest={{ application_path }}/local_settings.py
+            mode=0664
