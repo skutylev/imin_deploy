@@ -7,7 +7,7 @@ USER={{ gunicorn_user }}
 GROUP={{ gunicorn_group }}
 NUM_WORKERS={{ gunicorn_num_workers }}
 FLASK_SETTINGS_MODULE=settings
-FLASK_WSGI_MODULE=wsgi
+FLASK_WSGI_MODULE=api_server
 
 # Set this to 0 for unlimited requests. During development, you might want to
 # set this to 1 to automatically restart the process on each request (i.e. your
@@ -36,5 +36,4 @@ exec ../bin/gunicorn ${FLASK_WSGI_MODULE}:app -b 127.0.0.1:8000\
     --workers $NUM_WORKERS \
     --max-requests $MAX_REQUESTS \
     --user $USER --group $GROUP \
-    --log-level debug \
-    --bind unix:$SOCKFILE
+    --log-level debug
