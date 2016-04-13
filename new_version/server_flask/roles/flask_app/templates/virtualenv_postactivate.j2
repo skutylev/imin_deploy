@@ -2,4 +2,5 @@
 
 {% for variable_name, value in flask_environment.iteritems() %}
 export {{ variable_name }}="{{ value }}"
+
 {% endfor %}

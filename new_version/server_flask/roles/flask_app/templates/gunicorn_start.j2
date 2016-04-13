@@ -8,10 +8,6 @@ GROUP={{ gunicorn_group }}
 NUM_WORKERS={{ gunicorn_num_workers }}
 FLASK_SETTINGS_MODULE=settings
 FLASK_WSGI_MODULE=api_server
-
-# Set this to 0 for unlimited requests. During development, you might want to
-# set this to 1 to automatically restart the process on each request (i.e. your
-# code will be reloaded on every request).
 MAX_REQUESTS={{ gunicorn_max_requests }}
 
 echo "Starting $NAME as `whoami`"
