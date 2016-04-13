@@ -42,9 +42,10 @@ server {
     access_log {{ nginx_access_log_file }};
     error_log {{ nginx_error_log_file }};
 
-    if ($http_x_forwarded_proto != 'https') {
-        rewrite ^ https://$host$request_uri? permanent;
-    }
+    # uncomment if using aws elb
+    #if ($http_x_forwarded_proto != 'https') {
+    #   rewrite ^ https://$host$request_uri? permanent;
+    #}
 
     location / {
 
