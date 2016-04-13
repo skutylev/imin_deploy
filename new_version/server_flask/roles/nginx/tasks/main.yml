@@ -3,6 +3,22 @@
   apt: name=nginx update_cache=yes state=installed
   tags: packages
 
+- name: Copy the SSL certificate to the remote server
+  copy: src="naviplace.cer" dest={{ ssl_dest_dir }}/{{ application_name }}.crt force=no
+  notify: restart nginx
+
+- name: Copy the SSL private key to the remote server
+  copy: src="naviplace.key" dest={{ ssl_dest_dir }}/{{ application_name }}.key force=no
+  notify: restart nginx
+
+- name: Copy the SSL CA certificate to the remote server
+  copy: src="naviplace_ca.cer" dest={{ ssl_dest_dir }}/{{ application_name }}_ca.crt force=no
+  notify: restart nginx
+
+- name: Copy the SSL dh4096 to the remote server
+  copy: src="naviplace_dh4096.cer" dest={{ ssl_dest_dir }}/{{ application_name }}_dh4096.crt force=no
+  notify: restart nginx
+
 - name: Create the Nginx configuration file
   template: src=nginx_site_config.j2
             dest=/etc/nginx/sites-available/{{ application_name }}
