@@ -4,36 +4,70 @@ provider "aws" {
     region = "${var.region}"
 }
 
-resource "aws_key_pair" "auth" {
+resource "aws_key_pair" "${var.name}-key-pair" {
     key_name   = "${var.key_name}"
     public_key = "${file(var.public_key_path)}"
 }
 
-resource "aws_vpc" "default" {
-    cidr_block = "172.22.0.0/16"
+resource "aws_vpc" "${var.name}-vpc" {
+    cidr_block = "${var.cidr}"    
+    enable_dns_hostnames = "${var.enable_dns_hostnames}"
+    enable_dns_support = "${var.enable_dns_support}"
+    tags { Name = "${var.name}" }
 }
 
 resource "aws_internet_gateway" "default" {
     vpc_id = "${aws_vpc.default.id}"
 }
 
-resource "aws_route" "internet_access" {
-    route_table_id         = "${aws_vpc.default.main_route_table_id}"
+resource "aws_route_table" "public" {
+   vpc_id = "${aws_vpc.mod.id}"
+   tags { Name = "${var.name}-public" }
+}
+
+resource "aws_route" "public_internet_gateway" {
+    route_table_id = "${aws_route_table.public.id}"
     destination_cidr_block = "0.0.0.0/0"
-    gateway_id             = "${aws_internet_gateway.default.id}"
+    gateway_id = "${aws_internet_gateway.mod.id}"
 }
 
-resource "aws_subnet" "subnet1" {
-  vpc_id                  = "${aws_vpc.default.id}"
-  cidr_block              = "172.22.1.0/24"
+resource "aws_route_table" "private" {
+  vpc_id = "${aws_vpc.mod.id}"
+  tags { Name = "${var.name}-private" }
+}
+
+resource "aws_subnet" "private" {
+  vpc_id = "${aws_vpc.mod.id}"
+  cidr_block = "${element(split(",", var.private_subnets), count.index)}"
+  availability_zone = "${element(split(",", var.azs), count.index)}"
+  count = "${length(compact(split(",", var.private_subnets)))}"
+  tags { Name = "${var.name}-private" }
+}
+
+resource "aws_subnet" "public" {
+  vpc_id = "${aws_vpc.mod.id}"
+  cidr_block = "${element(split(",", var.public_subnets), count.index)}"
+  availability_zone = "${element(split(",", var.azs), count.index)}"
+  count = "${length(compact(split(",", var.public_subnets)))}"
+  tags { Name = "${var.name}-public" }
+
   map_public_ip_on_launch = true
 }
 
-resource "aws_subnet" "subnet2" {
-  vpc_id                  = "${aws_vpc.default.id}"
-  cidr_block              = "172.22.2.0/24"
-  map_public_ip_on_launch = true
+resource "aws_route_table_association" "private" {
+  count = "${length(compact(split(",", var.private_subnets)))}"
+  subnet_id = "${element(aws_subnet.private.*.id, count.index)}"
+  route_table_id = "${aws_route_table.private.id}"
 }
+
+resource "aws_route_table_association" "public" {
+  count = "${length(compact(split(",", var.public_subnets)))}"
+  subnet_id = "${element(aws_subnet.public.*.id, count.index)}"
+  route_table_id = "${aws_route_table.public.id}"
+}
+
+
+
 
 resource "aws_security_group" "navi-web-sg" {
   name        = "navi-web-sg"
