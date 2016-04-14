@@ -123,4 +123,3 @@ resource "aws_instance" "example" {
     key_name = "${aws_key_pair.auth.id}"
     subnet_id = "${aws_subnet.subnet1.id}"
 }
-
