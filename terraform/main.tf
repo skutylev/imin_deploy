@@ -16,42 +16,32 @@ resource "aws_vpc" "${var.name}-vpc" {
     tags { Name = "${var.name}" }
 }
 
-resource "aws_internet_gateway" "default" {
+resource "aws_internet_gateway" "${var.name}-gw" {
     vpc_id = "${aws_vpc.default.id}"
 }
 
-resource "aws_route_table" "public" {
+resource "aws_route_table" "${var.name}-rt" {
    vpc_id = "${aws_vpc.mod.id}"
    tags { Name = "${var.name}-public" }
 }
 
-resource "aws_route" "public_internet_gateway" {
+resource "aws_route" "${var.name}-pig" {
     route_table_id = "${aws_route_table.public.id}"
     destination_cidr_block = "0.0.0.0/0"
     gateway_id = "${aws_internet_gateway.mod.id}"
 }
 
-resource "aws_route_table" "private" {
+resource "aws_route_table" ${var.name}-private" {
   vpc_id = "${aws_vpc.mod.id}"
   tags { Name = "${var.name}-private" }
 }
 
-resource "aws_subnet" "private" {
+resource "aws_subnet" "${var.name}-private {
   vpc_id = "${aws_vpc.mod.id}"
   cidr_block = "${element(split(",", var.private_subnets), count.index)}"
   availability_zone = "${element(split(",", var.azs), count.index)}"
   count = "${length(compact(split(",", var.private_subnets)))}"
   tags { Name = "${var.name}-private" }
-}
-
-resource "aws_subnet" "public" {
-  vpc_id = "${aws_vpc.mod.id}"
-  cidr_block = "${element(split(",", var.public_subnets), count.index)}"
-  availability_zone = "${element(split(",", var.azs), count.index)}"
-  count = "${length(compact(split(",", var.public_subnets)))}"
-  tags { Name = "${var.name}-public" }
-
-  map_public_ip_on_launch = true
 }
 
 resource "aws_route_table_association" "private" {
@@ -65,9 +55,6 @@ resource "aws_route_table_association" "public" {
   subnet_id = "${element(aws_subnet.public.*.id, count.index)}"
   route_table_id = "${aws_route_table.public.id}"
 }
-
-
-
 
 resource "aws_security_group" "navi-web-sg" {
   name        = "navi-web-sg"

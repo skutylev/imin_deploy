@@ -37,9 +37,10 @@ uwsgi_port: 9000
 
 # nginx params
 nginx_server_name: "{{ subdomain }}.{{ public_domain }}"
+ssl_dest_dir: "/etc/ssl"
 
 # app params TODO: remove this
 flask_settings_file: settings
-flask_wsgi_module: wsgi
+flask_wsgi_module: api_server
 flask_secret_key: "zt^1+juv712ta$p0!4%%&sohr^d$_f*8&ru)8=s(_=u4%kdpt#"
 
