@@ -1,0 +1,46 @@
+### example project config, please cp this to main.yml ###
+
+# company: navi by default 
+# env: dev, staging, product
+# role: server, web
+company: navi
+env: staging 
+role: server
+
+# aws params AWS_ACCESS_KEY_ID, AWS_REGION, AWS_SECRET_ACCESS_KEY you should store in system env vars (e.g. export..)
+region: "eu-west-1"
+key_name: "navi-web-production-key"
+ami_image: "ami-f95ef58a" # Ubuntu Server 14.04.3 LTS
+sg_id: "sg-88554fec"
+instance_type: "t2.micro"
+subnet: "subnet-5c247905"
+ssl_certificate_id: "arn:aws:iam::725273025637:server-certificate/naviaddress.com"
+private_domain: "naviaddress.local"
+public_domain: "naviaddress.com"
+subdomain: "api-server" 
+
+# flask project and app params
+project_name: naviaddress-server
+application_name: naviaddress-server
+
+# git params
+# please generate keys, add pub key as deploy key in git repo on GitHub before use "MOAR KEYSSS!!"
+git_repo: ssh://git@github.com/naviworld/NaviAddress-Server.git 
+git_ssh_pub_key: ~/.ssh/navi_deploy.pub
+git_ssh_priv_key: ~/.ssh/navi_deploy
+branch: bootstrapping
+
+# gunicorn params
+gunicorn_num_workers: 3
+gunicorn_max_requests: 0
+uwsgi_port: 9000
+
+# nginx params
+nginx_server_name: "{{ subdomain }}.{{ public_domain }}"
+ssl_dest_dir: "/etc/ssl"
+
+# app params TODO: remove this
+flask_settings_file: settings
+flask_wsgi_module: api_server
+flask_secret_key: "zt^1+juv712ta$p0!4%%&sohr^d$_f*8&ru)8=s(_=u4%kdpt#"
+
