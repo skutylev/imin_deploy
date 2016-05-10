@@ -31,12 +31,12 @@ resource "aws_route" "${var.name}-pig" {
     gateway_id = "${aws_internet_gateway.mod.id}"
 }
 
-resource "aws_route_table" ${var.name}-private" {
+resource "aws_route_table" "${var.name}-private" {
   vpc_id = "${aws_vpc.mod.id}"
   tags { Name = "${var.name}-private" }
 }
 
-resource "aws_subnet" "${var.name}-private {
+resource "aws_subnet" "${var.name}-private" {
   vpc_id = "${aws_vpc.mod.id}"
   cidr_block = "${element(split(",", var.private_subnets), count.index)}"
   availability_zone = "${element(split(",", var.azs), count.index)}"

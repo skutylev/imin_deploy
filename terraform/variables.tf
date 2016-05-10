@@ -1,9 +1,9 @@
 variable "access_key" {
-    default = "AKIAI2YXZLZTOWJRF7DA"
+    default = "AKIAIVSCV3UVUSZQ3V4A"
 }
 
 variable "secret_key" { 
-    default = "KC0ngGvxIOj3M7Xgyy9EDhwIsSK39QDxuC3M2gKp" 
+    default = "1ULBfcysbM8H1XGVUQzPCI1oHG61nhQ0v8QE58de" 
 }
 
 variable "region" {
@@ -20,6 +20,3 @@ variable "key_name" {
     description = "Name of ssh key pairs in AWS EC2"
     default = "navi-ssh-key"
 }
-
-
-
